@@ -1,0 +1,5 @@
+/home/jonathas/Documentos/code/teste/teste-numero-cartao/src/test/java/br/com/desafio/cardapi/infrastructure/config/JwtServiceTest.java
+/home/jonathas/Documentos/code/teste/teste-numero-cartao/src/test/java/br/com/desafio/cardapi/application/services/CardServiceTest.java
+/home/jonathas/Documentos/code/teste/teste-numero-cartao/src/test/java/br/com/desafio/cardapi/adapters/out/crypto/CryptoAdapterTest.java
+/home/jonathas/Documentos/code/teste/teste-numero-cartao/src/test/java/br/com/desafio/cardapi/infrastructure/config/JwtAuthFilterTest.java
+/home/jonathas/Documentos/code/teste/teste-numero-cartao/src/test/java/br/com/desafio/cardapi/adapters/out/persistence/CardPersistenceAdapterTest.java
