@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  db:
+    image: cassandra:latest
+    container_name: card_cassandra
+    environment:
+      - CASSANDRA_CLUSTER_NAME=CardCluster
+    ports:
+      - "9042:9042"
+    volumes:
+      - cassandra_data:/var/lib/cassandra
+    healthcheck:
+      test: ["CMD-SHELL", "[ $$(nodetool statusgossip) = running ]"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: .
+    container_name: card_api
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - SPRING_CASSANDRA_CONTACT_POINTS=db:9042
+      - SPRING_CASSANDRA_LOCAL_DATACENTER=datacenter1
+      - JWT_SECRET=${JWT_SECRET:-desafio_hyperativa_jwt_secret_key_super_secure_2026}
+      - AES_KEY=${AES_KEY:-1234567890123456}
+      - HMAC_SECRET=${HMAC_SECRET:-desafio_hyperativa_hmac_secret_key_for_hashing_cards}
+
+volumes:
+  cassandra_data:
